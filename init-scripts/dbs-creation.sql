@@ -1,0 +1,6 @@
+-- Create additional databases
+CREATE DATABASE IF NOT EXISTS `order-db`;
+CREATE DATABASE IF NOT EXISTS `user-db`;
+CREATE DATABASE IF NOT EXISTS `product-db`;
+
+FLUSH PRIVILEGES;

@@ -6,6 +6,6 @@ services:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=admin
-      - MYSQL_DATABASE=e-commerce
     volumes:
       - ./data:/var/lib/mysql
+      - ./init-scripts:/docker-entrypoint-initdb.d 
