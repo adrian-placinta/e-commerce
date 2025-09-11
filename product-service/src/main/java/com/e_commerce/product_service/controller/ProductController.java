@@ -1,14 +1,45 @@
 package com.e_commerce.product_service.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.e_commerce.product_service.dto.ProductReq;
+import com.e_commerce.product_service.dto.ProductRes;
+import com.e_commerce.product_service.service.ProductService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/products")
 public class ProductController {
-    @GetMapping("/products")
-    public String getProducts() {
-        return "Test";
+    private final ProductService productService;
+
+    @GetMapping()
+    public ResponseEntity<List<ProductRes>> getProducts() {
+        return ResponseEntity.ok(productService.getAllProducts());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductRes> getProduct(@PathVariable final Long id) {
+        return ResponseEntity.ok(productService.getProductById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity<ProductRes> addProduct(@RequestBody final ProductReq productReq) {
+        return new ResponseEntity<>(productService.addProduct(productReq),
+                HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductRes> updateProduct(@PathVariable final Long id, @RequestBody final ProductReq productReq) {
+        return ResponseEntity.ok(productService.updateProduct(id, productReq));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable final Long id) {
+        productService.deleteProductById(id);
+        return ResponseEntity.noContent().build();
     }
 }

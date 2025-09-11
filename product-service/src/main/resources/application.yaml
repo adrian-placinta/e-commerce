@@ -2,9 +2,17 @@ spring:
   application:
     name: product-service
   datasource:
-    url: 
-    username:
-    password:
+    url: jdbc:mysql://localhost:3306/product-db
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
 server:
   port: 8080
 
+product:
+  not:
+    found:
+      message: "Product with id {0} cannot be found in database"
