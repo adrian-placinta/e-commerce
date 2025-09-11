@@ -2,13 +2,13 @@ package com.e_commerce.product_service.service.impl;
 
 import com.e_commerce.product_service.dto.ProductReq;
 import com.e_commerce.product_service.dto.ProductRes;
-import com.e_commerce.product_service.exception.ProductException;
+import com.e_commerce.product_service.exception.ProductNotFoundException;
+import com.e_commerce.product_service.model.Product;
 import com.e_commerce.product_service.util.ProductMapper;
 import com.e_commerce.product_service.repository.ProductRepository;
 import com.e_commerce.product_service.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,10 +41,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public ProductRes updateProduct(final Long id, final ProductReq productReq) {
-        var product = productRepository
-                .findById(id)
-                .orElseThrow(() -> new ProductException(MessageFormat.format(productNotFoundMessageTemplate, id)));
+    public ProductRes updateProduct(final Long id, final ProductReq productReq) throws ProductNotFoundException {
+        var product = findProductById(id);
 
         product.setProductDescription(productReq.productDescription());
         product.setProductName(productReq.productName());
@@ -58,10 +56,17 @@ public class ProductServiceImpl implements ProductService {
         return productRepository
                 .findById(id)
                 .map(ProductMapper::toProductRes)
-                .orElseThrow(() -> new ProductException(MessageFormat.format(productNotFoundMessageTemplate, id)));
+                .orElseThrow(() -> new ProductNotFoundException(MessageFormat.format(productNotFoundMessageTemplate, id)));
     }
 
+    @Override
     public void deleteProductById(final Long id) {
         productRepository.deleteById(id);
+    }
+
+    private Product findProductById(final Long id) throws ProductNotFoundException {
+        return productRepository
+                .findById(id)
+                .orElseThrow(() -> new ProductNotFoundException(MessageFormat.format(productNotFoundMessageTemplate, id)));
     }
 }

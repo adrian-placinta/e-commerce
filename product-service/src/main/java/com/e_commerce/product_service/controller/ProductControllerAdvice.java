@@ -1,7 +1,7 @@
 package com.e_commerce.product_service.controller;
 
 import com.e_commerce.product_service.dto.NotFoundExceptionRes;
-import com.e_commerce.product_service.exception.ProductException;
+import com.e_commerce.product_service.exception.ProductNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,9 +12,9 @@ import java.time.Instant;
 
 @RestControllerAdvice
 public class ProductControllerAdvice {
-    @ExceptionHandler(ProductException.class)
+    @ExceptionHandler(ProductNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public NotFoundExceptionRes productNotFoundHandler(ProductException productNotFoundException, HttpServletRequest httpServletRequest) {
+    public NotFoundExceptionRes productNotFoundHandler(ProductNotFoundException productNotFoundException, HttpServletRequest httpServletRequest) {
         return new NotFoundExceptionRes(productNotFoundException.getMessage(),
                 Instant.now().toString(),
                 HttpStatus.NOT_FOUND,
