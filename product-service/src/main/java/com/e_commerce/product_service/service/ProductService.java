@@ -6,7 +6,7 @@ import com.e_commerce.product_service.dto.ProductRes;
 import java.util.List;
 
 public interface ProductService {
-    List<ProductRes> getAllProducts();
+    List<ProductRes> getAllProducts(final int pageNo, final int pageSize);
 
     ProductRes addProduct(final ProductReq productReq);
 

@@ -1,4 +1,4 @@
-package com.e_commerce.product_service.mapper;
+package com.e_commerce.product_service.util;
 
 import com.e_commerce.product_service.dto.ProductReq;
 import com.e_commerce.product_service.dto.ProductRes;

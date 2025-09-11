@@ -17,8 +17,9 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping()
-    public ResponseEntity<List<ProductRes>> getProducts() {
-        return ResponseEntity.ok(productService.getAllProducts());
+    public ResponseEntity<List<ProductRes>> getProducts(@RequestParam(defaultValue = "0", required = false) final int pageNo,
+                                                        @RequestParam(defaultValue = "5", required = false) final int pageSize) {
+        return ResponseEntity.ok(productService.getAllProducts(pageNo, pageSize));
     }
 
     @GetMapping("/{id}")
@@ -33,7 +34,8 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductRes> updateProduct(@PathVariable final Long id, @RequestBody final ProductReq productReq) {
+    public ResponseEntity<ProductRes> updateProduct(@PathVariable final Long id,
+                                                    @RequestBody final ProductReq productReq) {
         return ResponseEntity.ok(productService.updateProduct(id, productReq));
     }
 
