@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: api-gateway
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:7080/realms/e-commerce
+          jwk-set-uri: http://localhost:7080/realms/e-commerce/protocol/openid-connect/certs
+
+server:
+  port: 8000
