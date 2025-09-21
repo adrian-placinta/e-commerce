@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: inventory-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:7080/realms/e-commerce
+          jwk-set-uri: http://localhost:7080/realms/e-commerce/protocol/openid-connect/certs
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/inventory_db
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+server:
+  port: 8085
+
+

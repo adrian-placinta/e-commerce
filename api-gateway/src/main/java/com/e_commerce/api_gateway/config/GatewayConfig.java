@@ -10,9 +10,10 @@ public class GatewayConfig {
     @Bean
     RouteLocator routeLocator(RouteLocatorBuilder routeLocatorBuilder) {
         return routeLocatorBuilder.routes()
-                .route("product-service",
-                        r -> r.path("/api/v1/products/**")
-                                .uri("http://localhost:8080"))
+                .route("product-service", r -> r.path("/api/v1/products/**")
+                        .uri("http://localhost:8080"))
+                .route("inventory-service", r -> r.path("/api/v1/inventory/**")
+                        .uri("http://localhost:8085"))
                 .build();
     }
 }
