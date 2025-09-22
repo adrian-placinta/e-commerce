@@ -23,5 +23,5 @@ public class Inventory {
     private Long quantity;
 
     @Version
-    private String version;
+    private Long version;
 }

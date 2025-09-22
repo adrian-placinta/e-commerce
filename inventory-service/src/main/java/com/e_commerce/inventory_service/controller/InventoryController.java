@@ -10,20 +10,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/inventory/")
+@RequestMapping("api/v1/inventory/")
 @RequiredArgsConstructor
-@Slf4j
 public class InventoryController {
 
     private final InventoryService inventoryService;
 
-    @PutMapping("{productId}")
-    public ResponseEntity<InventoryRes> updateInventoryStockQuantity(
-            @PathVariable long productId,
-            @RequestParam long quantity) {
-
-        InventoryRes updatedInventory = inventoryService.updateInventoryStockQuantity(productId, quantity);
-        return ResponseEntity.ok(updatedInventory);
+    @GetMapping("{productId}")
+    public ResponseEntity<InventoryRes> getInventoryStock(@PathVariable long productId) {
+        InventoryRes inventoryRes = inventoryService.getInventoryStock(productId);
+        return ResponseEntity.ok(inventoryRes);
     }
 
     @PostMapping
@@ -34,17 +30,19 @@ public class InventoryController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdInventory);
     }
 
+    @PutMapping("{productId}")
+    public ResponseEntity<InventoryRes> updateInventoryStockQuantity(
+            @PathVariable long productId,
+            @RequestParam long quantity) {
+
+        InventoryRes updatedInventory = inventoryService.updateInventoryStockQuantity(productId, quantity);
+        return ResponseEntity.ok(updatedInventory);
+    }
+
     @DeleteMapping("{productId}")
     public ResponseEntity<Void> deleteInventoryStock(@PathVariable long productId) {
-
         inventoryService.deleteInventoryStock(productId);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("{productId}")
-    public ResponseEntity<InventoryRes> getInventoryStock(@PathVariable long productId) {
-
-        InventoryRes inventoryRes = inventoryService.getInventoryStock(productId);
-        return ResponseEntity.ok(inventoryRes);
-    }
 }
