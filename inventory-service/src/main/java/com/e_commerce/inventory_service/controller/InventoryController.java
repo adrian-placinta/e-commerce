@@ -4,10 +4,11 @@ import com.e_commerce.inventory_service.dto.InventoryReq;
 import com.e_commerce.inventory_service.dto.InventoryRes;
 import com.e_commerce.inventory_service.service.InventoryService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/inventory/")
@@ -18,25 +19,20 @@ public class InventoryController {
 
     @GetMapping("{productId}")
     public ResponseEntity<InventoryRes> getInventoryStock(@PathVariable long productId) {
-        InventoryRes inventoryRes = inventoryService.getInventoryStock(productId);
-        return ResponseEntity.ok(inventoryRes);
+        return ResponseEntity.ok(inventoryService.getInventoryStock(productId));
     }
 
     @PostMapping
     public ResponseEntity<InventoryRes> addNewInventoryStock(
             @RequestBody InventoryReq inventoryReq) {
-
-        InventoryRes createdInventory = inventoryService.addNewInventoryStock(inventoryReq);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdInventory);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(inventoryService.addNewInventoryStock(inventoryReq));
     }
 
-    @PutMapping("{productId}")
-    public ResponseEntity<InventoryRes> updateInventoryStockQuantity(
-            @PathVariable long productId,
-            @RequestParam long quantity) {
-
-        InventoryRes updatedInventory = inventoryService.updateInventoryStockQuantity(productId, quantity);
-        return ResponseEntity.ok(updatedInventory);
+    @PutMapping()
+    public ResponseEntity<List<InventoryRes>> updateInventoryStockQuantity(
+            List<InventoryReq> inventoryReqs) {
+        return ResponseEntity.ok(inventoryService.updateInventoryStockQuantity(inventoryReqs));
     }
 
     @DeleteMapping("{productId}")

@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +21,7 @@ public class Order {
     private Long id;
     @Column(name = "user_id", nullable = false)
     private String userId;
-    @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY, orphanRemoval = true)
     private List<OrderItem> orderItems;
 }

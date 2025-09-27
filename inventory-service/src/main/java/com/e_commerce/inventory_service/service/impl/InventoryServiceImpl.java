@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.MessageFormat;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,15 +24,18 @@ public class InventoryServiceImpl implements InventoryService {
     @Value("${stock.not-found.message}")
     private String stockNotFoundMessage;
 
-    @Transactional
     @Override
-    public InventoryRes updateInventoryStockQuantity(long productId, long quantity) {
+    public List<InventoryRes> updateInventoryStockQuantity(List<InventoryReq> inventoryReqs) {
 
-        var inventory = getInventoryStockById(productId);
-        inventory.setQuantity(quantity);
+        List<Inventory> inventoryStocksDb = inventoryReqs.stream()
+                .map(inventoryReq -> updateInventoryStockQuantity(inventoryReq.productId(),
+                        inventoryReq.quantity())).toList();
 
-        return InventoryMapper
-                .toInventoryResponse(inventoryRepository.save(inventory));
+        return inventoryRepository
+                .saveAll(inventoryStocksDb)
+                .stream()
+                .map(InventoryMapper::toInventoryResponse)
+                .toList();
     }
 
     @Override
@@ -55,5 +59,15 @@ public class InventoryServiceImpl implements InventoryService {
         return inventoryRepository
                 .findByProductId(productId)
                 .orElseThrow(() -> new StockNotFoundException(MessageFormat.format(stockNotFoundMessage, productId)));
+    }
+
+    private Inventory updateInventoryStockQuantity(long productId, long quantity) {
+        Inventory inventoryStock = getInventoryStockById(productId);
+        if (inventoryStock.getQuantity() + quantity < 0) {
+            throw new RuntimeException("bla bla");
+        }
+        inventoryStock.setQuantity(quantity);
+
+        return inventoryStock;
     }
 }
