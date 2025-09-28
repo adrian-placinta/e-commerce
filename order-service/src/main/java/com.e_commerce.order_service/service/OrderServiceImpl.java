@@ -65,7 +65,7 @@ public class OrderServiceImpl implements OrderService {
 
         //If ok -> update db -> if not don't update and rollback transaction
 
-        //If db update fails, it should revert inventory changes. Is that idempotency?
+        //If db update fails, it should revert inventory changes.
 
     }
 
