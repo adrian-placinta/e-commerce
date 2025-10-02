@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="31f09892-a4f4-4ec6-a394-428a48f6b205" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../infra/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../inventory-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../inventory-service/src/test/java/com/e_commerce/inventory_service/TestInventoryServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../inventory-service/src/test/java/com/e_commerce/inventory_service/TestcontainersConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/config/KafkaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/controller/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/dto/OrderItemDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/dto/OrderReq.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/dto/OrderRes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/exception/OrderNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/messaging/OrderEventConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/messaging/OrderEventProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/messaging/events/OrderCreatedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/messaging/events/OrderInventoryFailedEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/model/OrderStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/model/factory/OrderCreatedEventFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/model/factory/OrderFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/repository/OrderRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/service/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/util/OrderMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../order-service/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../inventory-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/e_commerce/inventory_service/config/ResourceServerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/e_commerce/inventory_service/controller/InventoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/e_commerce/inventory_service/controller/InventoryControllerAdvice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/e_commerce/inventory_service/dto/InventoryReq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/e_commerce/inventory_service/dto/InventoryRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/e_commerce/inventory_service/dto/StockNotFoundExceptionRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/e_commerce/inventory_service/exception/StockNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/e_commerce/inventory_service/model/Inventory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/e_commerce/inventory_service/repository/InventoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/e_commerce/inventory_service/service/InventoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/e_commerce/inventory_service/service/impl/InventoryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/java/com/e_commerce/inventory_service/util/InventoryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/main/resources/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inventory-service/src/test/java/com/e_commerce/inventory_service/InventoryServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../inventory-service/src/test/java/com/e_commerce/inventory_service/InventoryServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/HELP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/OrderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/OrderServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/client/InventoryClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/config/ResourceServerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/controller/OrderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/dto/InventoryRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/dto/OrderItemReq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/dto/OrderItemRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/dto/OrderReq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/dto/OrderRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/exception/InventoryUpdateException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/model/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/model/OrderItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/repository/OrderRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/service/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/service/OrderServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com.e_commerce.order_service/util/OrderMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../order-service/src/test/java/com/e_commerce/order_service/OrderServiceApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="33TrrkXGJxHd2TfIdew3RGkMdBD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Adrian/Desktop/e-commerce/untitled/src/main/java/org/example/Main.java&quot;
+  }
+}</component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="31f09892-a4f4-4ec6-a394-428a48f6b205" name="Changes" comment="" />
+      <created>1759352105510</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1759352105510</updated>
+    </task>
+    <servers />
+  </component>
+</project>

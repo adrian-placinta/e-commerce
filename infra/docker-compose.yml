@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    hostname: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    hostname: kafka
+    ports:
+      # Expose host port 9092 for connection from the host machine (e.g., Spring Boot app or CLI)
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      # Listener for communication *within* the Docker network (kafka:9092)
+      KAFKA_LISTENERS: PLAINTEXT://kafka:29092,EXTERNAL://0.0.0.0:9092
+      # Listener map allows internal and external traffic to resolve correctly
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      # The internal listener for inter-broker communication
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      # The advertised listener for the host machine to connect (localhost:9092)
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,EXTERNAL://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    depends_on:
+      - zookeeper
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      # kafka-ui connects to Kafka using the Docker internal hostname/port
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      # Zookeeper is not strictly needed for modern Kafka UI but included for legacy support
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+    depends_on:
+      - kafka
