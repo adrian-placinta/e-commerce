@@ -5,34 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c76319ec-70fe-4526-b4e0-b92533ace473" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../events/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../events/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../events/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../events/src/main/java/events/OrderCreatedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../events/src/main/java/events/OrderInventoryFailedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../stock-service/src/main/java/com/e_commerce/inventory_service/messaging/OrderEventConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mail-service/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/../mail-service/HELP.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/dto/OrderItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/dto/OrderItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/messaging/OrderEventConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/messaging/OrderEventConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/messaging/OrderEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/messaging/OrderEventProducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/messaging/events/OrderCreatedEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/messaging/events/OrderInventoryFailedEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/model/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/model/OrderItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/model/factory/OrderCreatedEventFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/model/factory/OrderCreatedEventFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/util/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/java/com/e_commerce/order_service/util/OrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../order-service/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../order-service/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../product-service/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/../product-service/HELP.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../product-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../stock-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../stock-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../stock-service/src/main/java/com/e_commerce/inventory_service/InventoryServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../stock-service/src/main/java/com/e_commerce/inventory_service/StockServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../stock-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../stock-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../stock-service/src/test/java/com/e_commerce/inventory_service/TestInventoryServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../stock-service/src/test/java/com/e_commerce/inventory_service/TestInventoryServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
