@@ -8,16 +8,11 @@ import org.springframework.context.annotation.Configuration;
 public class KafkaConfig {
     @Bean
     NewTopic orderTopic() {
-        return new NewTopic("order-topic", 3, (short) 1);
+        return new NewTopic("order-topic", 1, (short) 1);
     }
 
     @Bean
-    NewTopic inventoryTopic() {
-        return new NewTopic("inventory-topic", 3, (short) 1);
-    }
-
-    @Bean
-    NewTopic paymentTopic() {
-        return new NewTopic("order-topic", 3, (short) 1);
+    NewTopic stockTopic() {
+        return new NewTopic("stock-topic", 1, (short) 1);
     }
 }

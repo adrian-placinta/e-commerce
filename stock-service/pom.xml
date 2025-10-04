@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.e-commerce</groupId>
-	<artifactId>inventory-service</artifactId>
+	<artifactId>stock-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>inventory-service</name>
+	<name>stock-service</name>
 	<description>Service that manages all the products in stock</description>
 	<url/>
 	<licenses>

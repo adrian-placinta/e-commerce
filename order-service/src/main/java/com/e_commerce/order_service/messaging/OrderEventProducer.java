@@ -11,7 +11,7 @@ public class OrderEventProducer {
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
     public void publishOrderCreatedEvent(final OrderCreatedEvent orderCreatedEvent) {
-        kafkaTemplate.send("inventory-topic", orderCreatedEvent);
+        kafkaTemplate.send("stock-topic", orderCreatedEvent);
     }
 
 }
