@@ -64,6 +64,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>com.e-commerce</groupId>
+			<artifactId>events</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

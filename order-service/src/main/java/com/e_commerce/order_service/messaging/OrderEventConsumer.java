@@ -1,6 +1,6 @@
 package com.e_commerce.order_service.messaging;
 
-import com.e_commerce.order_service.messaging.events.OrderInventoryFailedEvent;
+import events.OrderInventoryFailedEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 

@@ -23,5 +23,4 @@ public class OrderItem {
     private Order order;
     private Long productId;
     private Long quantity;
-    private BigDecimal price;
 }

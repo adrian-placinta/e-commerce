@@ -1,8 +1,8 @@
 package com.e_commerce.order_service.model.factory;
 
-import com.e_commerce.order_service.messaging.events.OrderCreatedEvent;
 import com.e_commerce.order_service.model.Order;
 import com.e_commerce.order_service.model.OrderItem;
+import events.OrderCreatedEvent;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,7 +30,6 @@ public class OrderCreatedEventFactory {
         return OrderCreatedEvent.OrderItemEvent.builder()
                 .productId(item.getProductId())
                 .quantity(item.getQuantity())
-                .price(item.getPrice())
                 .build();
     }
 }

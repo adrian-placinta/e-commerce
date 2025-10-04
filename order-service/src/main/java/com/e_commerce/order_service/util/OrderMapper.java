@@ -27,7 +27,6 @@ public class OrderMapper {
                 .builder()
                 .productId(orderItem.getProductId())
                 .quantity(orderItem.getQuantity())
-                .price(orderItem.getPrice()) // added price mapping
                 .build();
     }
 
@@ -36,7 +35,6 @@ public class OrderMapper {
                 .builder()
                 .productId(orderItemDto.getProductId())
                 .quantity(orderItemDto.getQuantity())
-                .price(orderItemDto.getPrice()) // added price mapping
                 .build();
     }
 
