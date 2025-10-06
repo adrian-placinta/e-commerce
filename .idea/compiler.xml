@@ -12,7 +12,7 @@
         <module name="mail-service" />
         <module name="events" />
       </profile>
-      <profile name="Annotation profile for stock-service" enabled="true">
+      <profile name="Annotation profile for order-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />

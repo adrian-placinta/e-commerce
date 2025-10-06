@@ -64,7 +64,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = OrderFactory.createOrder(userId, orderItems, OrderStatus.PENDING);
 
         order.getOrderItems()
-                .forEach(orderItem -> orderItem.setId(orderItem.getId()));
+                .forEach(orderItem -> orderItem.setOrder(order));
 
         Order orderDb = orderRepository.save(order);
 
