@@ -5,7 +5,6 @@ import com.e_commerce.order_service.dto.OrderRes;
 import com.e_commerce.order_service.exception.OrderNotFoundException;
 import com.e_commerce.order_service.messaging.OrderEventProducer;
 import com.e_commerce.order_service.model.Order;
-import com.e_commerce.order_service.model.OrderItem;
 import com.e_commerce.order_service.model.OrderStatus;
 import com.e_commerce.order_service.model.factory.OrderCreatedEventFactory;
 import com.e_commerce.order_service.model.factory.OrderFactory;
@@ -55,24 +54,14 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderRes placeOrder(final OrderReq orderReq, final String userId) {
 
-        List<OrderItem> orderItems = orderReq
-                .getOrderItems()
-                .stream()
-                .map(OrderMapper::toOrderItem)
-                .toList();
-
-        Order order = OrderFactory.createOrder(userId, orderItems, OrderStatus.PENDING);
-
-        order.getOrderItems()
-                .forEach(orderItem -> orderItem.setOrder(order));
-
-        Order orderDb = orderRepository.save(order);
+        Order orderDb = orderRepository
+                .save(OrderFactory.createOrder(userId,
+                        OrderStatus.PENDING,
+                        orderReq));
 
         orderEventProducer.publishOrderCreatedEvent(OrderCreatedEventFactory.fromOrder(orderDb));
 
         return OrderMapper.toOrderRes(orderDb);
 
     }
-
-
 }

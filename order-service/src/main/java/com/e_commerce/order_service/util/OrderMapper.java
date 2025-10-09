@@ -31,11 +31,11 @@ public class OrderMapper {
     }
 
     public static OrderItem toOrderItem(OrderItemDto orderItemDto) {
-        return OrderItem
-                .builder()
-                .productId(orderItemDto.getProductId())
-                .quantity(orderItemDto.getQuantity())
-                .build();
+        OrderItem orderItem = new OrderItem();
+        orderItem.setProductId(orderItemDto.getProductId());
+        orderItem.setQuantity(orderItemDto.getQuantity());
+
+        return orderItem;
     }
 
 }

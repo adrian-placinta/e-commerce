@@ -15,9 +15,9 @@ public class ProductMapper {
 
     public static Product toProduct(ProductReq productReq) {
         return Product.builder()
-                .productName(productReq.productName())
-                .productDescription(productReq.productDescription())
-                .price(productReq.price())
+                .productName(productReq.getProductName())
+                .productDescription(productReq.getProductDescription())
+                .price(productReq.getPrice())
                 .build();
     }
 }
