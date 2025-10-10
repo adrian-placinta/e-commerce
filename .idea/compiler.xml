@@ -8,7 +8,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="product-service" />
-        <module name="mail-service" />
         <module name="events" />
       </profile>
       <profile name="Annotation profile for stock-service" enabled="true">
@@ -25,6 +24,7 @@
     <bytecodeTargetLevel>
       <module name="api-gateway" target="17" />
       <module name="authentication-service" target="17" />
+      <module name="mail-service" target="17" />
       <module name="shared" target="24" />
     </bytecodeTargetLevel>
   </component>
