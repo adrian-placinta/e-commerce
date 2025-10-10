@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("orderReservationEventProducer")
 @RequiredArgsConstructor
 public class OrderReservationEventProducer implements OrderEventProducer<OrderStockReservedEvent> {
     private final KafkaTemplate<String, OrderStockReservedEvent> kafkaTemplate;

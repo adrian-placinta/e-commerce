@@ -8,9 +8,10 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 
-@Component
+@Component("orderCreatedEventConsumer")
 @RequiredArgsConstructor
 public class OrderCreatedEventConsumer implements OrderEventConsumer<OrderCreatedEvent> {
+
     private final OrderEventHandler<OrderCreatedEvent> orderCreatedEventOrderEventHandler;
 
     @Override

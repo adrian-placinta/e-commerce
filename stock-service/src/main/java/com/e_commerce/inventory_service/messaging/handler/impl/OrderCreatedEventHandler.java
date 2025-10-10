@@ -16,11 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Instant;
 import java.util.List;
 
-@Component
+@Component("orderCreatedEventHandler")
 @RequiredArgsConstructor
 public class OrderCreatedEventHandler implements OrderEventHandler<OrderCreatedEvent> {
-
-    private final OrderEventProducer<OrderStockReservedEvent> orderStockReservedEventProducer;
+    private final OrderEventProducer<OrderStockReservedEvent> orderReservationEventProducer;
     private final OrderEventProducer<OrderStockDeniedEvent> orderStockDeniedEventProducer;
     private final StockService stockService;
 
@@ -34,7 +33,7 @@ public class OrderCreatedEventHandler implements OrderEventHandler<OrderCreatedE
 
             stockService.updateAllStocks(updatedStocks);
 
-            orderStockReservedEventProducer
+            orderReservationEventProducer
                     .produce(new OrderStockReservedEvent(orderCreatedEvent.orderId(), Instant.now()));
 
         } catch (InsufficientStockException | StockNotFoundException e) {
