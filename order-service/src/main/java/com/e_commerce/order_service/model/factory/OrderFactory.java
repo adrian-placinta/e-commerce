@@ -3,7 +3,6 @@ package com.e_commerce.order_service.model.factory;
 import com.e_commerce.order_service.dto.OrderReq;
 import com.e_commerce.order_service.model.Order;
 import com.e_commerce.order_service.model.OrderItem;
-import com.e_commerce.order_service.model.OrderStatus;
 import com.e_commerce.order_service.util.OrderMapper;
 
 import java.util.Collections;
@@ -15,9 +14,8 @@ public class OrderFactory {
     private OrderFactory() {
     }
 
-    public static Order createOrder(String userId, OrderStatus orderStatus, OrderReq orderReq) {
+    public static Order createOrder(String userId, OrderReq orderReq) {
         Order order = new Order();
-        order.setOrderStatus(orderStatus);
         order.setUserId(userId);
         order.setOrderItems(setOrderItems(orderReq, order));
 

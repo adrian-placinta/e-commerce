@@ -31,7 +31,7 @@ public class StockController {
 
     @PostMapping
     public ResponseEntity<List<StockRes>> saveStock(@RequestBody List<StockReq> stockReqs) {
-        return new ResponseEntity<>(stockService.saveStock(stockReqs), HttpStatus.CREATED);
+        return new ResponseEntity<>(stockService.saveAllStocks(stockReqs), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{productId}")
@@ -40,13 +40,4 @@ public class StockController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/decrease")
-    public ResponseEntity<List<StockRes>> decreaseStocks(@RequestBody List<StockReq> stockReqs) {
-        return ResponseEntity.ok(stockService.decreaseStocks(stockReqs));
-    }
-
-    @PostMapping("/increase")
-    public ResponseEntity<List<StockRes>> increaseStocks(@RequestBody List<StockReq> stockReqs) {
-        return ResponseEntity.ok(stockService.increaseStocks(stockReqs));
-    }
 }

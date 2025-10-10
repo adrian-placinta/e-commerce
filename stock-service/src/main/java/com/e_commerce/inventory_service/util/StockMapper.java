@@ -6,18 +6,19 @@ import com.e_commerce.inventory_service.model.Stock;
 
 public class StockMapper {
 
-    public static Stock toEntity(final StockReq dto) {
+    public static Stock toEntity(final StockReq stockReqDto) {
         return Stock.builder()
-                .productId(dto.getProductId())
-                .quantity(dto.getQuantity())
+                .productId(stockReqDto.productId())
+                .quantity(stockReqDto.quantity())
                 .build();
     }
 
     public static StockRes toRes(final Stock entity) {
-        return StockRes.builder()
-                .stockId(entity.getStockId())
-                .productId(entity.getProductId())
-                .quantity(entity.getQuantity())
-                .build();
+        return new StockRes(
+                entity.getStockId(),
+                entity.getProductId(),
+                entity.getQuantity()
+        );
     }
+
 }

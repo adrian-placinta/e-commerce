@@ -49,8 +49,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-  //  @CachePut(value = "PRODUCT_MAP", key = "#id")
- //   @CacheEvict(value = "PRODUCTS_MAP", allEntries = true)
+    @CachePut(value = "PRODUCT_MAP", key = "#id")
+    @CacheEvict(value = "PRODUCTS_MAP", allEntries = true)
     public ProductRes updateProduct(final Long id, final ProductReq productReq) throws ProductNotFoundException {
         var product = findProductById(id);
 
@@ -62,7 +62,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-//@Cacheable(value = "PRODUCT_MAP", key = "#id")
+    @Cacheable(value = "PRODUCT_MAP", key = "#id")
     public ProductRes getProductById(final Long id) {
         return productRepository
                 .findById(id)
@@ -72,9 +72,8 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
- //   @Caching(evict = {@CacheEvict(cacheNames = "PRODUCT_MAP", key = "#id", beforeInvocation = true),
-  //          @CacheEvict(cacheNames = "PRODUCTS_MAP", allEntries = true)}
-   // )
+    @Caching(evict = {@CacheEvict(cacheNames = "PRODUCT_MAP", key = "#id", beforeInvocation = true),
+            @CacheEvict(cacheNames = "PRODUCTS_MAP", allEntries = true)})
     public void deleteProductById(final Long id) {
         productRepository.deleteById(id);
     }

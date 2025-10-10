@@ -1,5 +1,6 @@
 package com.e_commerce.inventory_service.service.impl;
 
+import com.e_commerce.inventory_service.constant.StockExceptionMessage;
 import com.e_commerce.inventory_service.dto.StockReq;
 import com.e_commerce.inventory_service.dto.StockRes;
 import com.e_commerce.inventory_service.exceptions.InsufficientStockException;
@@ -13,19 +14,18 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class StockServiceImpl implements StockService {
+
     private final StockRepository stockRepository;
 
     @Override
     @Transactional(readOnly = true)
     public List<StockRes> getAllStocks(int pageNo, int pageSize) {
-        return stockRepository
-                .findAll(PageRequest.of(pageNo, pageSize))
+        return stockRepository.findAll(PageRequest.of(pageNo, pageSize))
                 .stream()
                 .map(StockMapper::toRes)
                 .toList();
@@ -34,24 +34,29 @@ public class StockServiceImpl implements StockService {
     @Override
     @Transactional(readOnly = true)
     public StockRes getStockByProductId(final long productId) {
-        return stockRepository
-                .findByProductId(productId)
+        return stockRepository.findByProductId(productId)
                 .map(StockMapper::toRes)
-                .orElseThrow(() ->
-                        new StockNotFoundException(String
-                                .format("Stock cannot be found for product with id %s", productId)));
+                .orElseThrow(() -> new StockNotFoundException(StockExceptionMessage.NOT_FOUND,
+                        productId));
     }
 
     @Override
     @Transactional
-    public List<StockRes> saveStock(final List<StockReq> stocks) {
-        List<Stock> stockList = stocks
-                .stream()
+    public List<StockRes> saveAllStocks(final List<StockReq> stocks) {
+        List<Stock> stockEntities = stocks.stream()
                 .map(StockMapper::toEntity)
                 .toList();
 
-        return stockRepository
-                .saveAll(stockList)
+        return stockRepository.saveAll(stockEntities)
+                .stream()
+                .map(StockMapper::toRes)
+                .toList();
+    }
+
+    @Override
+    @Transactional
+    public List<StockRes> updateAllStocks(List<Stock> stocks) {
+        return stockRepository.saveAll(stocks)
                 .stream()
                 .map(StockMapper::toRes)
                 .toList();
@@ -61,60 +66,47 @@ public class StockServiceImpl implements StockService {
     @Transactional
     public void deleteStockByProductId(final long productId) {
         if (!stockRepository.existsByProductId(productId)) {
-            throw new StockNotFoundException(String
-                    .format("Stock cannot be found for product with id %s", productId));
+            throw new StockNotFoundException(StockExceptionMessage.NOT_FOUND, productId);
         }
         stockRepository.deleteByProductId(productId);
     }
 
-    @Override
     @Transactional
-    public List<StockRes> decreaseStocks(List<StockReq> stockReqs) {
-        List<Stock> updatedStocks = stockReqs.stream()
-                .map(req -> stockRepository
-                        .findByProductId(req.getProductId())
-                        .map(dbStock -> decreaseStock(dbStock, req.getQuantity()))
-                        .orElseThrow(() -> new StockNotFoundException(
-                                "Stock not found for product ID: " + req.getProductId())))
-                .toList();
+    public StockRes subtractFromStockAndSave(final long productId, final long quantity) {
+        Stock updatedStock = stockRepository.save(subtractFromStock(quantity, productId));
+        return StockMapper.toRes(updatedStock);
+    }
 
-        return stockRepository.saveAll(updatedStocks)
-                .stream()
-                .map(StockMapper::toRes)
-                .toList();
+    @Transactional
+    public StockRes addToStockAndSave(final long productId, final long quantity) {
+        Stock updatedStock = stockRepository.save(addToStock(productId, quantity));
+        return StockMapper.toRes(updatedStock);
     }
 
     @Override
-    @Transactional
-    public List<StockRes> increaseStocks(List<StockReq> stockReqs) {
-        List<Stock> updatedStocks = stockReqs.stream()
-                .map(req -> stockRepository
-                        .findByProductId(req.getProductId())
-                        .map(dbStock -> increaseStock(dbStock, req.getQuantity()))
-                        .orElseThrow(() -> new StockNotFoundException(
-                                "Stock not found for product ID: " + req.getProductId())))
-                .toList();
+    public Stock subtractFromStock(final long quantity, final long productId) {
+        Stock stock = stockRepository.findByProductId(productId)
+                .orElseThrow(() -> new StockNotFoundException(StockExceptionMessage.NOT_FOUND,
+                        productId));
 
-        return stockRepository.saveAll(updatedStocks)
-                .stream()
-                .map(StockMapper::toRes)
-                .toList();
-    }
-
-    private Stock decreaseStock(final Stock dbStock, final BigDecimal quantity) {
-        if (dbStock.getQuantity().compareTo(quantity) < 0) {
-            throw new InsufficientStockException(String.format(
-                    "Insufficient stock for product %s. Available: %s, Requested: %s",
-                    dbStock.getProductId(), dbStock.getQuantity(), quantity));
+        if (stock.getQuantity() < quantity) {
+            throw new InsufficientStockException(StockExceptionMessage.INSUFFICIENT,
+                    productId,
+                    stock.getQuantity(),
+                    quantity);
         }
 
-        dbStock.setQuantity(dbStock.getQuantity().subtract(quantity));
-
-        return dbStock;
+        stock.setQuantity(stock.getQuantity() - quantity);
+        return stock;
     }
 
-    private Stock increaseStock(final Stock dbStock, final BigDecimal quantity) {
-        dbStock.setQuantity(dbStock.getQuantity().add(quantity));
-        return dbStock;
+    @Override
+    public Stock addToStock(final long productId, final long quantityToAdd) {
+        Stock stock = stockRepository.findByProductId(productId)
+                .orElseThrow(() -> new StockNotFoundException(StockExceptionMessage.NOT_FOUND,
+                        productId));
+
+        stock.setQuantity(stock.getQuantity() + quantityToAdd);
+        return stock;
     }
 }

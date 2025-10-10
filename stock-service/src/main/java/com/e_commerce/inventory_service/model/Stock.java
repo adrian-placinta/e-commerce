@@ -20,7 +20,7 @@ public class Stock {
     @Column(unique = true, nullable = false)
     private Long productId;
     @Column(nullable = false)
-    private BigDecimal quantity;
+    private Long quantity;
     @Version
     private Long version;
 }

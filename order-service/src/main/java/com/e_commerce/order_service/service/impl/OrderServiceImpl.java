@@ -5,7 +5,6 @@ import com.e_commerce.order_service.dto.OrderRes;
 import com.e_commerce.order_service.exception.OrderNotFoundException;
 import com.e_commerce.order_service.messaging.OrderEventProducer;
 import com.e_commerce.order_service.model.Order;
-import com.e_commerce.order_service.model.OrderStatus;
 import com.e_commerce.order_service.model.factory.OrderCreatedEventFactory;
 import com.e_commerce.order_service.model.factory.OrderFactory;
 import com.e_commerce.order_service.repository.OrderRepository;
@@ -56,7 +55,6 @@ public class OrderServiceImpl implements OrderService {
 
         Order orderDb = orderRepository
                 .save(OrderFactory.createOrder(userId,
-                        OrderStatus.PENDING,
                         orderReq));
 
         orderEventProducer.publishOrderCreatedEvent(OrderCreatedEventFactory.fromOrder(orderDb));
